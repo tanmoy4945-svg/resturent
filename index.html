@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royal Spice | India's Best Food & Fine Dining</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        :root { 
+            --primary: #ffa500; 
+            --dark: #000; 
+            --dark-light: #121212;
+            --accent: #ff4500; 
+            --white: #ffffff;
+            --gray: #888;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        body { background-color: var(--dark); color: white; font-family: 'Poppins', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+
+        /* --- 1. TOP BAR --- */
+        .top-bar { background: var(--accent); color: white; padding: 10px 8%; display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; }
+
+        /* --- 2. NAVBAR (Original Style) --- */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 8%; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary); backdrop-filter: blur(10px); }
+        .logo { font-size: 28px; font-weight: bold; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
+        nav .nav-links a { color: white; text-decoration: none; margin-left: 25px; font-weight: 500; transition: 0.3s; font-size: 14px; text-transform: uppercase; }
+        nav .nav-links a:hover { color: var(--primary); }
+
+        /* --- 3. HERO BANNER (Original Style) --- */
+        .hero { height: 95vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=1500&q=80') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 5%; }
+        .hero h1 { font-size: 80px; margin: 0; color: var(--primary); text-transform: uppercase; letter-spacing: 8px; line-height: 1; }
+        .hero p { font-size: 22px; max-width: 800px; margin: 30px 0; font-weight: 300; }
+        .btn { padding: 16px 45px; background: var(--primary); color: black; text-decoration: none; font-weight: 800; border-radius: 50px; font-size: 16px; transition: 0.4s; display: inline-block; border: none; cursor: pointer; text-transform: uppercase; }
+        .btn:hover { background: white; transform: scale(1.1); box-shadow: 0 0 20px var(--primary); }
+
+        /* --- Global Titles --- */
+        .section-title { text-align: center; padding: 80px 0 40px; font-size: 45px; color: var(--primary); text-transform: uppercase; letter-spacing: 3px; position: relative; }
+        .section-title::after { content: ''; width: 100px; height: 3px; background: var(--accent); position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); }
+
+        /* --- 4. STATS BAR --- */
+        .stats-bar { background: var(--dark-light); padding: 60px 8%; display: flex; justify-content: space-around; text-align: center; border-top: 1px solid #222; }
+        .stat-item h2 { font-size: 45px; color: var(--primary); margin-bottom: 5px; }
+        .stat-item p { text-transform: uppercase; font-size: 13px; color: var(--gray); letter-spacing: 2px; }
+
+        /* --- 5. ABOUT SECTION --- */
+        .about { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 100px 8%; align-items: center; }
+        .about-img img { width: 100%; border-radius: 20px; border: 10px solid var(--dark-light); }
+        .about-text h2 { font-size: 40px; color: var(--primary); margin-bottom: 25px; }
+        .about-text p { font-size: 17px; line-height: 1.8; color: #ccc; margin-bottom: 20px; }
+
+        /* --- 6. MENU GRID (Original Style) --- */
+        .food-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; padding: 0 8% 100px; }
+        .food-card { background: #111; border-radius: 20px; overflow: hidden; border: 1px solid #222; transition: 0.4s; position: relative; }
+        .food-card:hover { transform: translateY(-15px); border-color: var(--primary); }
+        .food-card img { width: 100%; height: 280px; object-fit: cover; transition: 0.5s; }
+        .food-card:hover img { transform: scale(1.1); }
+        .food-info { padding: 25px; }
+        .food-info h3 { font-size: 22px; color: var(--primary); margin-bottom: 10px; }
+        .food-info p { color: #888; font-size: 14px; margin-bottom: 15px; }
+        .price { font-size: 26px; color: #fff; font-weight: 700; margin-bottom: 15px; display: block; }
+        .order-btn { width: 100%; padding: 12px; background: var(--primary); border: none; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; border-radius: 5px; }
+        .order-btn:hover { background: white; }
+
+        /* --- 7. SPECIAL OFFER BANNER --- */
+        .offer-banner { padding: 100px 8%; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1500') center/cover; text-align: center; }
+        .offer-banner h2 { font-size: 50px; color: var(--primary); margin-bottom: 20px; }
+        .offer-banner .discount { font-size: 80px; font-weight: 900; color: var(--white); }
+
+        /* --- 8. CHEF SECTION --- */
+        .chef-section { background: var(--dark-light); padding: 100px 8%; display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+        .chef-img { flex: 1; min-width: 300px; }
+        .chef-img img { width: 100%; border-radius: 30px; box-shadow: 20px 20px 0 var(--primary); }
+        .chef-text { flex: 1.5; min-width: 300px; }
+
+        /* --- 9. CATEGORY TABS --- */
+        .cat-nav { display: flex; justify-content: center; gap: 20px; padding-bottom: 50px; }
+        .cat-link { padding: 10px 25px; border: 1px solid var(--primary); border-radius: 50px; cursor: pointer; font-size: 14px; transition: 0.3s; }
+        .cat-link.active, .cat-link:hover { background: var(--primary); color: black; font-weight: 700; }
+
+        /* --- 10. REVIEWS (Original reviews structure idea) --- */
+        .reviews { padding: 100px 8%; background: var(--dark); text-align: center; }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .rev-card { background: #111; padding: 40px; border-radius: 20px; border-bottom: 4px solid var(--primary); }
+        .rev-card i { color: var(--primary); font-size: 25px; margin-bottom: 20px; }
+
+        /* --- 11. RESERVATION FORM --- */
+        .reserve { padding: 100px 8%; background: var(--dark-light); text-align: center; }
+        .reserve-form { max-width: 800px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .reserve-form input, .reserve-form select { padding: 15px; background: #222; border: 1px solid #333; color: white; border-radius: 5px; }
+
+        /* --- 12. VIDEO SECTION --- */
+        .video-box { height: 400px; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1500') center/cover; display: flex; align-items: center; justify-content: center; }
+        .play-btn { width: 80px; height: 80px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: black; cursor: pointer; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.7); } 70% { box-shadow: 0 0 0 30px rgba(255, 165, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 165, 0, 0); } }
+
+        /* --- 13. FAQ --- */
+        .faq { padding: 100px 20%; background: var(--dark); }
+        .faq-item { margin-bottom: 15px; background: #111; border-radius: 10px; padding: 20px; cursor: pointer; }
+        .faq-item h4 { color: var(--primary); display: flex; justify-content: space-between; }
+
+        /* --- 14. FOOTER (Mega Luxury) --- */
+        footer { background: #000; padding: 100px 8% 20px; border-top: 2px solid var(--primary); }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; }
+        .footer-col h4 { color: var(--primary); margin-bottom: 30px; font-size: 20px; text-transform: uppercase; }
+        .footer-col p, .footer-col li { font-size: 14px; color: #aaa; margin-bottom: 15px; list-style: none; }
+        .footer-col a { color: #aaa; text-decoration: none; transition: 0.3s; }
+        .footer-col a:hover { color: var(--primary); padding-left: 5px; }
+
+        /* --- WhatsApp Button --- */
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 35px; text-decoration: none; z-index: 1000; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: 0.3s; }
+        .wa-btn:hover { transform: scale(1.1) rotate(15deg); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 45px; }
+            .about, .chef-section, .reserve-form { grid-template-columns: 1fr; }
+            nav { padding: 20px 5%; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Top Bar -->
+    <div class="top-bar">
+        <span><i class="fas fa-map-marker-alt"></i> 123 Royal Street, Kolkata, WB, India</span>
+        <span><i class="fas fa-clock"></i> OPEN NOW: 11:00 AM - 11:00 PM</span>
+    </div>
+
+    <!-- 2. Navbar -->
+    <nav>
+        <div class="logo">ROYAL <span>SPICE.</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Our Menu</a>
+            <a href="#reservation">Book Table</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- 3. Hero Banner -->
+    <section class="hero" id="home">
+        <h1 class="animate__animated animate__fadeInDown">Experience Royalty</h1>
+        <p class="animate__animated animate__fadeInUp">Indulge in the finest Indian flavors crafted by world-class chefs. We bring the tradition of taste directly to your table with luxury and spice.</p>
+        <div class="animate__animated animate__zoomIn">
+            <a href="#menu" class="btn">VIEW OUR MENU</a>
+            <a href="#reservation" class="btn" style="background: transparent; border: 2px solid var(--primary); color: white; margin-left: 15px;">Book Table</a>
+        </div>
+    </section>
+
+    <!-- 4. Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item"><h2>25+</h2><p>Year Legacy</p></div>
+        <div class="stat-item"><h2>50+</h2><p>Expert Chefs</p></div>
+        <div class="stat-item"><h2>150+</h2><p>Special Dishes</p></div>
+        <div class="stat-item"><h2>20k+</h2><p>Happy Guests</p></div>
+    </div>
+
+    <!-- 5. About Us -->
+    <section class="about" id="about">
+        <div class="about-img animate__animated animate__fadeInLeft">
+            <img src="https://images.unsplash.com/photo-1550966842-2849a2249822?q=80&w=1500" alt="Restaurant Interior">
+        </div>
+        <div class="about-text animate__animated animate__fadeInRight">
+            <h2>The Culinary Journey Of Royal Spice</h2>
+            <p>For over two decades, Royal Spice has been the hallmark of authentic Indian dining. We select only the freshest ingredients and traditional spices to create masterpieces.</p>
+            <p>Our restaurant offers a majestic ambiance where every guest is treated like royalty. From our Tandoors to our Curries, every dish tells a story of heritage.</p>
+            <a href="#" class="btn" style="padding: 12px 30px; font-size: 14px;">Discover More</a>
+        </div>
+    </section>
+
+    <!-- 9. Category Nav -->
+    <div class="cat-nav">
+        <div class="cat-link active">ALL DISHES</div>
+        <div class="cat-link">STARTERS</div>
+        <div class="cat-link">MAIN COURSE</div>
+        <div class="cat-link">DESSERTS</div>
+        <div class="cat-link">DRINKS</div>
+    </div>
+
+    <!-- 6. Menu Section (Static Example of PHP Loop) -->
+    <h2 class="section-title" id="menu">Chef's Recommendations</h2>
+    <div class="food-grid">
+        <!-- Dish 1 -->
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=1500" alt="food">
+            <div class="food-info">
+                <h3>Royal Mutton Biryani</h3>
+                <p>Long grain basmati rice cooked with tender mutton and saffron.</p>
+                <span class="price">₹450</span>
+                <button class="order-btn">ORDER ON WHATSAPP</button>
+            </div>
+        </div>
+        <!-- Dish 2 -->
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1603894527177-9419f06dd645?q=80&w=1500" alt="food">
+            <div class="food-info">
+                <h3>Paneer Tikka Masala</h3>
+                <p>Charcoal grilled paneer in a rich creamy tomato gravy.</p>
+                <span class="price">₹320</span>
+                <button class="order-btn">ORDER ON WHATSAPP</button>
+            </div>
+        </div>
+        <!-- Dish 3 -->
+        <div class="food-card">
+            <img src="https://images.unsplash.com/photo-1517244492180-758b29598282?q=80&w=1500" alt="food">
+            <div class="food-info">
+                <h3>Butter Chicken Deluxe</h3>
+                <p>The classic Indian delight served with extra butter and love.</p>
+                <span class="price">₹380</span>
+                <button class="order-btn">ORDER ON WHATSAPP</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Special Offer -->
+    <section class="offer-banner">
+        <h2>Weekend Royalty Treat</h2>
+        <div class="discount">FLAT 25% OFF</div>
+        <p style="margin: 20px 0; font-size: 20px;">On all orders above ₹1500. Valid every Sat-Sun.</p>
+        <a href="#" class="btn">CLAIM OFFER</a>
+    </section>
+
+    <!-- 8. Chef Section -->
+    <section class="chef-section">
+        <div class="chef-img">
+            <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=1500" alt="Head Chef">
+        </div>
+        <div class="chef-text">
+            <h2 style="font-size: 35px; color: var(--primary);">Meet Our Master Chef</h2>
+            <h4 style="margin-bottom: 20px; color: #aaa;">Chef Sanjeev Kapur - 20 Years Experience</h4>
+            <p>Our kitchen is led by world-renowned chefs who understand that cooking is an art. They blend traditional techniques with modern presentation to give you a unique dining experience.</p>
+            <div style="margin-top: 30px;">
+                <i class="fas fa-medal" style="font-size: 40px; color: var(--primary);"></i>
+                <span style="margin-left: 15px; font-weight: bold;">Certified 5-Star Culinary Artist</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. Video Section -->
+    <div class="video-box">
+        <div class="play-btn"><i class="fas fa-play"></i></div>
+    </div>
+
+    <!-- 11. Reservation Section -->
+    <section class="reserve" id="reservation">
+        <h2 class="section-title">Book Your Royal Table</h2>
+        <p style="margin-bottom: 40px; color: #aaa;">Avoid waiting, book your luxury spot now in just 2 minutes.</p>
+        <div class="reserve-form">
+            <input type="text" placeholder="Full Name">
+            <input type="text" placeholder="Phone Number">
+            <input type="date">
+            <select>
+                <option>Number of Persons</option>
+                <option>2 Persons</option>
+                <option>4 Persons</option>
+                <option>6+ Persons</option>
+            </select>
+            <input type="text" placeholder="Special Request" style="grid-column: 1/-1;">
+            <button class="btn" style="grid-column: 1/-1;">CONFIRM BOOKING</button>
+        </div>
+    </section>
+
+    <!-- 10. Reviews -->
+    <section class="reviews" id="reviews">
+        <h2 class="section-title">What Our Royalty Says</h2>
+        <div class="review-grid">
+            <div class="rev-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"The best Biryani I've ever had in India. The spice level was perfect and the ambiance is truly majestic."</p>
+                <h4 style="margin-top: 20px; color: var(--primary);">- Rahul S.</h4>
+                <div style="color: gold; margin-top: 5px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+            <div class="rev-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"A wonderful experience. The service was top-notch and the Butter Chicken melted in my mouth."</p>
+                <h4 style="margin-top: 20px; color: var(--primary);">- Sneha D.</h4>
+                <div style="color: gold; margin-top: 5px;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. FAQ Section -->
+    <section class="faq">
+        <h2 style="text-align: center; color: var(--primary); margin-bottom: 40px;">Common Inquiries</h2>
+        <div class="faq-item">
+            <h4>Do you offer Home Delivery? <i class="fas fa-plus"></i></h4>
+        </div>
+        <div class="faq-item">
+            <h4>Is there parking space available? <i class="fas fa-plus"></i></h4>
+        </div>
+        <div class="faq-item">
+            <h4>Do you provide catering for events? <i class="fas fa-plus"></i></h4>
+        </div>
+    </section>
+
+    <!-- 14. Mega Footer -->
+    <footer>
+        <div class="footer-grid container">
+            <div class="footer-col">
+                <h2 class="logo">ROYAL <span>SPICE.</span></h2>
+                <p>Bringing the authentic taste of India to your plates with a royal touch. Visit us for an unforgettable culinary journey.</p>
+                <div style="display:flex; gap:15px; font-size:22px; margin-top:25px;">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#">Our Menu</a></li>
+                    <li><a href="#">Chef's Special</a></li>
+                    <li><a href="#">Reservations</a></li>
+                    <li><a href="#">Order Online</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Kolkata, WB, India</p>
+                <p><i class="fas fa-phone"></i> +91 89004 15647</p>
+                <p><i class="fas fa-envelope"></i> contact@royalspice.com</p>
+            </div>
+        </div>
+        <div style="border-top:1px solid #222; margin-top:60px; padding-top:25px; text-align:center; color:#555; font-size:13px;">
+            &copy; 2026 The Royal Spice. Designed & Maintained by <span style="color:var(--primary)">DigiMoms Agency</span>.
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/918900415647?text=Hello, I want to order food." class="wa-btn"><i class="fab fa-whatsapp"></i></a>
+
+</body>
+</html>
