@@ -345,7 +345,67 @@
     </footer>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/918900415647?text=Hello, I want to order food." class="wa-btn"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/910000000000?text=Hello, I want to order food." class="wa-btn"><i class="fab fa-whatsapp"></i></a>
+
+
+
+
+
+
+<!-- WhatsApp Floating Button -->
+<style>
+    .wa-float-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25d366;
+        color: #fff;
+        padding: 12px 25px;
+        border-radius: 50px;
+        box-shadow: 2px 5px 15px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: 'Arial', sans-serif;
+        font-weight: bold;
+        text-decoration: none;
+        z-index: 9999;
+        transition: 0.3s;
+    }
+
+    .wa-float-btn:hover {
+        background-color: #128c7e;
+        transform: scale(1.05);
+        color: white;
+    }
+
+    .wa-float-btn i {
+        font-size: 22px;
+    }
+
+    /* মোবাইলে বাটনটি ছোট দেখানোর জন্য */
+    @media (max-width: 480px) {
+        .wa-float-btn span {
+            display: none; /* মোবাইলে শুধু আইকন দেখাবে চাইলে এটা সরাতে পারেন */
+        }
+        .wa-float-btn {
+            padding: 15px;
+            border-radius: 50%;
+        }
+    }
+</style>
+
+<!-- FontAwesome Icons এর জন্য এই লিঙ্কটি হেডারে না থাকলে এখানে দিন -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<a href="text=Hello%20DigiMoms,%20I%20want%20to%20build%20a%20Restaurant%20website" class="wa-float-btn" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span>Build a site like this</span>
+</a>
+
+
+
+    
 
 </body>
 </html>
